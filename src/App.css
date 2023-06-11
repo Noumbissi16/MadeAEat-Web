@@ -1,38 +1,498 @@
-.App {
-  text-align: center;
+/* ============= GLOBAL CSS =============== */
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500");
+
+html {
+  font-size: 100%;
+} /*16px*/
+
+:root {
+  /* colors */
+  --primary-100: #cff3da;
+  --primary-200: #9fe6b5;
+  --primary-300: #6fda91;
+  --primary-400: #3fcd6c;
+  --primary-500: #0fc147;
+  --primary-600: #09742b;
+  --primary-700: #064d1c;
+  --primary-800: #03270e;
+  --primary-900: #000000;
+  --backgroundColor: #f3fcf6;
+
+  /* grey */
+  --secondary-100: #ecd0cf;
+  --secondary-200: #d9a0a0;
+  --secondary-300: #c77170;
+  --secondary-400: #b44141;
+  --secondary-500: #a11211;
+  --secondary-600: #810e0e;
+  --secondary-700: #610b0a;
+  --secondary-800: #400707;
+  --secondary-900: #200403;
+  --red-light: rgba(161, 18, 17, 0.15);
+  /* rest of the colors */
+  --grey: #d9d9d9;
+  --white: #fff;
+
+  --small-text: 0.875rem;
+  --extra-small-text: 0.7em;
+  /* rest of the vars */
+  --textColor: var(--secondary-900);
+  --borderRadius: 0.45rem;
+  --letterSpacing: 0.75px;
+  --transition: 0.3s ease-in-out all;
+  --max-width: 1120px;
+  --fixed-width: 600px;
+
+  /* box shadow*/
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: var(--backgroundColor);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--textColor);
+}
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-family: var(--headingFont);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+h1 {
+  font-size: 3.052rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+.text {
+  margin-bottom: 1.5rem;
+  max-width: 40em;
+}
+
+small,
+.text-small {
+  font-size: var(--small-text);
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+button {
+  /* font-weight: 600; */
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+/*  */
+/* buttons */
+
+.btn {
+  /* font-family: ; */
+  cursor: pointer;
+  color: var(--white);
+  background: var(--primary-600);
+  border: transparent;
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 0.375rem 0.75rem;
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+  text-transform: capitalize;
+  display: inline-block;
+}
+.btn:hover {
+  background: var(--primary-700);
+  box-shadow: var(--shadow-3);
+}
+.btn-hipster {
+  color: var(--white);
+  background: var(--secondary-200);
+}
+.btn-hipster:hover {
+  /* color: var(--primary-200); */
+  background: var(--secondary-500);
+}
+.btn-block {
+  width: 100%;
+  padding: 0.75rem 0;
+}
+
+/* alerts */
+.alert {
+  padding: 0.375rem 0.75rem;
+  margin-bottom: 1rem;
+  border-color: transparent;
+  border-radius: var(--borderRadius);
+}
+
+.alert-danger {
+  color: var(--red-dark);
+  background: var(--red-light);
+}
+.alert-success {
+  color: var(--green-dark);
+  background: var(--green-light);
+}
+/* form */
+
+.form {
+  width: 90vw;
+  max-width: var(--fixed-width);
+  background: var(--white);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  padding: 2rem 2.5rem;
+  margin: 2.5rem auto;
+  border-radius: var(--borderRadius);
+}
+.form-label {
+  font-weight: 600;
+  display: block;
+  font-size: var(--small-text);
+  margin-bottom: 0.125rem;
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+}
+input:focus {
+  outline: none;
+  border: 1.25px solid var(--primary-400);
+}
+input::placeholder {
+  color: var(--primary-300);
+  font-family: "Montserrat", sans-serif;
+}
+select,
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 0.75rem;
+  border-radius: var(--borderRadius);
+  background: var(--primary-100);
+  border: none;
+}
+textarea {
+  resize: none;
+}
+textarea:focus {
+  outline: none;
+  border: 1.25px solid var(--primary-400);
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-textarea {
+  height: 7rem;
+}
+::placeholder {
+  font-family: inherit;
+  color: var(--secondary-100);
+}
+.form-alert {
+  color: var(--red-dark);
+  letter-spacing: var(--letterSpacing);
+  text-transform: capitalize;
+}
+/* alert */
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loading {
+  width: 6rem;
+  height: 6rem;
+  border: 5px solid var(--grey-400);
+  border-radius: 50%;
+  border-top-color: var(--primary-500);
+  animation: spinner 0.6s linear infinite;
+  margin: 0 auto;
+}
+
+/* title */
+
+.title {
+  text-align: center;
+}
+
+.title-underline {
+  background: var(--primary-500);
+  width: 7rem;
+  height: 0.25rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+/* Inscription restaurant */
+.container {
+  width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+.underline-flex {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.underline {
+  width: 90vw;
+  border: 0.25px solid var(--primary-800);
+  max-width: 200px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Navbar */
+.Link {
+  text-align: center;
+  color: var(--primary-800);
+  font-size: 1rem;
+}
+.btn-Link {
+  color: var(--white);
+}
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  background-color: var(--primary-700);
+  color: var(--white);
+  padding: 0.75rem 0;
+}
+.mainTitle {
+  font-size: 1.5rem;
+}
+.link-flex {
+  display: none;
+}
+.link-flex-display {
+  display: block;
+}
+.nav-flex {
+  margin-top: 0.75rem;
+}
+.span {
+  color: var(--primary-100);
+}
+.active {
+  color: var(--white);
+  border-bottom: 2px solid var(--white);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.NavLink {
+  color: var(--white);
+  margin-bottom: 1.75rem;
+}
+.nav-icons {
+  width: 25px;
+  height: 25px;
+}
+.name-icon-flex {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* Pages */
+.page-container {
+  width: 90vw;
+  margin: 7.25rem auto;
+  max-width: var(--max-width);
+}
+
+/* All Menu Page */
+.repas-details {
+  text-align: center;
+  box-shadow: var(--shadow-1);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  background-color: var(--white);
+  margin-bottom: 1rem;
+}
+.repas-details:hover {
+  box-shadow: var(--shadow-3);
+}
+.img-poisson {
+  width: 100%;
+  object-fit: cover;
+  height: 150px;
+  border-radius: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.menu-margin {
+  margin-bottom: 0.5rem;
+}
+.menu-desc {
+  font-size: 0.9rem;
+  line-height: 1rem;
+  margin-bottom: 0.75rem;
+}
+.btn-flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+.pageTitle {
+  padding: 0.625rem;
+  color: var(--white);
+  /* font-weight: 600; */
+  border-radius: var(--borderRadius);
+  margin-bottom: 1rem;
+  background-color: var(--primary-500);
+}
+.menu-flex {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.addMenuBtn {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+}
+.card {
+  background-color: var(--white);
+  padding: 1rem;
+  box-shadow: var(--shadow-1);
+  border-radius: var(--borderRadius);
+  text-align: center;
+}
+.card-content {
+  margin-bottom: 0.75rem;
+}
+.card-titles {
+  font-weight: bold;
+}
+.card-text-danger {
+  color: var(--primary-600);
+}
+.card-text-primary {
+  color: var(--secondary-500);
+}
+
+.btn-list {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .nav-icons {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .link-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mainTitle {
+    font-size: 1.5rem;
+  }
+  .NavLink {
+    margin-right: 02.5rem;
+  }
+  /* Pages */
+  .page-container {
+    margin-top: 7rem;
+  }
+  /* All menu page */
+  .img-poisson {
+    /* object-fit: cover; */
+    width: 200px;
+    height: 150px;
+  }
+  .repas-details {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: start;
+    align-items: center;
+  }
+
+  .col-menu {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .btn-flex {
+    justify-self: end;
+    justify-content: space-around;
+    /* display: block; */
+  }
+  .menu-flex {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .addMenuBtn {
+    padding: 0.65rem;
+  }
+  .menu-list {
+    flex: 2;
+  }
+  .btn-list {
+    flex: 1;
+    margin-left: 1.5rem;
   }
 }
