@@ -1,6 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../routes/Navbar";
 import { Outlet } from "react-router-dom";
+import { withAuthRequired } from "../hoc/withAuthRequired";
 
 function Landing() {
   return (
@@ -12,3 +13,5 @@ function Landing() {
 }
 
 export default Landing;
+
+export const ProtectedLanding = withAuthRequired(Landing);

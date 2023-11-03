@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "first_name": "Millicent",
+    "last_name": "Whatham",
+    "email": "mwhatham0@comsenz.com",
+    "gender": "Female",
+    "university": "Samarkand State University"
+  },
+  {
+    "id": 2,
+    "first_name": "Siward",
+    "last_name": "Amberger",
+    "email": "samberger1@behance.net",
+    "gender": "Male",
+    "university": "Institute of Industrial Electronics Engineering"
+  },
+  {
+    "id": 3,
+    "first_name": "Sheree",
+    "last_name": "Madeley",
+    "email": "smadeley2@google.com",
+    "gender": "Female",
+    "university": "Kateb Institute of Higher Education"
+  },
+  {
+    "id": 4,
+    "first_name": "Egor",
+    "last_name": "Downing",
+    "email": "edowning3@nymag.com",
+    "gender": "Male",
+    "university": "Universidad de Concepción del Uruguay"
+  },
+  {
+    "id": 5,
+    "first_name": "Donn",
+    "last_name": "Wilce",
+    "email": "dwilce4@answers.com",
+    "gender": "Male",
+    "university": "State University of New York at Binghamton"
+  },
+  {
+    "id": 6,
+    "first_name": "Kenon",
+    "last_name": "Jersch",
+    "email": "kjersch5@youtu.be",
+    "gender": "Male",
+    "university": "Université de Nantes"
+  },
+  {
+    "id": 7,
+    "first_name": "Klara",
+    "last_name": "Valett",
+    "email": "kvalett6@plala.or.jp",
+    "gender": "Female",
+    "university": "Gifu Keizai University"
+  },
+  {
+    "id": 8,
+    "first_name": "Roberta",
+    "last_name": "Glendinning",
+    "email": "rglendinning7@ft.com",
+    "gender": "Female",
+    "university": "University of Marketing and Distribution Sciences"
+  },
+  {
+    "id": 9,
+    "first_name": "Murray",
+    "last_name": "Gherarducci",
+    "email": "mgherarducci8@webmd.com",
+    "gender": "Male",
+    "university": "New World University"
+  },
+  {
+    "id": 10,
+    "first_name": "Hamid",
+    "last_name": "Wixey",
+    "email": "hwixey9@alibaba.com",
+    "gender": "Male",
+    "university": "Kagawa Institute of Nutrition"
+  },
+  {
+    "id": 11,
+    "first_name": "Neils",
+    "last_name": "Gyorgy",
+    "email": "ngyorgya@vistaprint.com",
+    "gender": "Male",
+    "university": "Fachhochschule Merseburg"
+  },
+  {
+    "id": 12,
+    "first_name": "Janetta",
+    "last_name": "Greger",
+    "email": "jgregerb@google.com.br",
+    "gender": "Female",
+    "university": "Manuel S. Enverga University Foundation"
+  },
+  {
+    "id": 13,
+    "first_name": "Marvin",
+    "last_name": "Banasevich",
+    "email": "mbanasevichc@macromedia.com",
+    "gender": "Male",
+    "university": "Rakuno Gakuen University"
+  },
+  {
+    "id": 14,
+    "first_name": "Rolland",
+    "last_name": "Zealy",
+    "email": "rzealyd@1688.com",
+    "gender": "Male",
+    "university": "Fachhochschule und Berufskollegs NTA, Prof.Dr. Grübler gemein. GmbH"
+  },
+  {
+    "id": 15,
+    "first_name": "Rikki",
+    "last_name": "McCorrie",
+    "email": "rmccorriee@newsvine.com",
+    "gender": "Female",
+    "university": "Prescott College"
+  },
+  {
+    "id": 16,
+    "first_name": "Francisco",
+    "last_name": "Kilbee",
+    "email": "fkilbeef@va.gov",
+    "gender": "Male",
+    "university": "Universidad Catolica de Azogues"
+  },
+  {
+    "id": 17,
+    "first_name": "Wittie",
+    "last_name": "Paoletto",
+    "email": "wpaolettog@free.fr",
+    "gender": "Male",
+    "university": "City University of New York, School of Law at Queens College"
+  },
+  {
+    "id": 18,
+    "first_name": "Boonie",
+    "last_name": "Benard",
+    "email": "bbenardh@liveinternet.ru",
+    "gender": "Genderqueer",
+    "university": "The Illinois Institute of Art-Chicago"
+  },
+  {
+    "id": 19,
+    "first_name": "Alleen",
+    "last_name": "Hollidge",
+    "email": "ahollidgei@answers.com",
+    "gender": "Female",
+    "university": "Universidad Central del Ecuador"
+  },
+  {
+    "id": 20,
+    "first_name": "Reade",
+    "last_name": "Studdeard",
+    "email": "rstuddeardj@statcounter.com",
+    "gender": "Male",
+    "university": "University of East London"
+  }
+]

@@ -1,0 +1,28 @@
+@import "../../../App.css";
+
+.link {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  color: var(--black);
+}
+
+.link.active {
+  border-radius: 8px;
+  background: var(--primary-100);
+  color: var(--black);
+  font-weight: 550;
+}
+
+.icons {
+  margin-right: 15px;
+}
+
+.sideBarContainer {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: var(--largeRadius);
+}
+
+@media screen and (min-width: 600px) {
+}

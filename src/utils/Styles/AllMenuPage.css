@@ -1,0 +1,67 @@
+@import "../../App.css";
+
+.pageTitle {
+  padding: 0.625rem 24px;
+  color: var(--white);
+  border-radius: var(--borderRadius);
+  margin-bottom: 1rem;
+  background-color: var(--primary-800);
+}
+
+.addMenuBtn {
+  width: 100%;
+  margin-bottom: 1rem;
+  border: none;
+  font-size: 16px;
+}
+.btn-list {
+  margin-bottom: 1rem;
+}
+
+.card {
+  background-color: var(--white);
+  box-shadow: var(--shadow-1);
+  border-radius: var(--borderRadius);
+  text-align: center;
+  font-size: 13px;
+  padding-top: 18px;
+}
+.card-content {
+  margin-bottom: 0.75rem;
+}
+.card-titles {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.card-text-danger {
+  color: var(--secondary-500);
+}
+.card-text-primary {
+  color: var(--primary-600);
+}
+
+@media (min-width: 500px) {
+  .menu-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+  .menu-list {
+    flex: 2;
+  }
+
+  .addMenuBtn {
+    padding: 0.75rem;
+    font-size: 14px;
+  }
+
+  .btn-list {
+    flex: 1;
+    margin-left: 1.5rem;
+  }
+  .menu-page-flex {
+    display: flex;
+  }
+}

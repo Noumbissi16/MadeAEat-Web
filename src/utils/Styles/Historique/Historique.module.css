@@ -1,0 +1,66 @@
+@import url("../../../App.css");
+
+.tableSeperator {
+  margin-bottom: 30px;
+}
+
+.innerContent {
+  margin-top: 15px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: var(--largeRadius);
+  text-align: center;
+  position: relative;
+  height: 175px;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.img {
+  border-radius: 150px;
+  margin-bottom: 8px;
+}
+
+.info {
+  background-color: var(--primary-300);
+  color: var(--white);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 13px;
+}
+
+.priceFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: var(--largeRadius);
+  height: 150px;
+  font-weight: 550;
+}
+
+@media (min-width: 992px) {
+  .flex {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .col_left {
+    flex-basis: 20%;
+  }
+  .col_middle {
+    flex-basis: 55%;
+  }
+  .col_right {
+    flex-basis: 15%;
+  }
+}

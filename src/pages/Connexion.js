@@ -1,10 +1,15 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../utils/Styles/Inscription.css";
+import { useDispatch } from "react-redux";
+import { addAdminInfoAction } from "../redux/Restaurant/restaurant-slice";
 
 function Connexion() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleForm = (e) => {
     e.preventDefault();
+    dispatch(addAdminInfoAction());
     navigate("/");
   };
   return (
@@ -14,9 +19,7 @@ function Connexion() {
         <h2>Application des Restaurants</h2>
       </div>
       <form className="form" onSubmit={handleForm}>
-        <h3 className="title margin-bottom">
-          Connectez-vous a votre compte Restaurateur{" "}
-        </h3>
+        <h4 className="title">Connectez-vous a votre compte Restaurateur </h4>
         <div className="form-row">
           <label htmlFor="nom" className="form-label">
             Nom Utilisateur

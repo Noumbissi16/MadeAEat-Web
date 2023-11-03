@@ -1,0 +1,81 @@
+@import "../../App.css";
+
+.repas_details {
+  box-shadow: var(--shadow-1);
+  border-radius: 1rem;
+  background-color: var(--white);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.repas_details:hover {
+  box-shadow: var(--shadow-3);
+}
+
+.thumbnail {
+  height: 150px;
+  width: 100%;
+}
+
+.col_menu {
+  padding: 15px;
+}
+
+.col_name {
+  font-size: 24px;
+  font-weight: 550;
+  color: var(--black);
+}
+.price {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.menu_desc {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: var(--grey);
+
+  text-align: justify;
+}
+.btn_flex {
+  display: flex;
+  flex-direction: column;
+  margin-top: 13px;
+}
+.marginBtn {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 500px) and (max-width: 750px) {
+  .repas_details {
+    width: 100%;
+  }
+}
+@media (min-width: 751px) and (max-width: 991px) {
+  .repas_details {
+    width: 49%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .repas_details {
+    width: 49%;
+  }
+  .col_name {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+  .menu_desc {
+    font-size: 12px;
+  }
+  .btn_flex {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .marginBtn {
+    margin-bottom: 0;
+  }
+}

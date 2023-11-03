@@ -1,0 +1,58 @@
+@import "../../App.css";
+
+.panelNavbar select {
+  padding: 14px;
+  background-color: var(--primary-900);
+  color: var(--white, #fff);
+  margin: 12px 0;
+}
+
+.tableau-de-bord {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.panelLinks {
+  background-color: var(--primary-500);
+  border-radius: 4px;
+  padding: 7px 24px 7px 24px;
+  color: var(--white);
+  border: none;
+  width: 45%;
+}
+.panelNavbar .active {
+  background-color: var(--primary-700);
+}
+
+.linkHistFlex {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 600px) {
+  .tableau-de-bord {
+    font-size: 20px;
+  }
+  .linkHistFlex {
+    display: block;
+    margin-right: 25px;
+  }
+  .panelNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .leftFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .panelNavbar select {
+    margin: 0;
+    padding: 8px;
+  }
+  .panelLinks {
+    padding: 6px 18px;
+    margin-right: 10px;
+  }
+}

@@ -1,10 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { addAdminInfoAction } from "../redux/Restaurant/restaurant-slice";
+import { useState } from "react";
 
 function AdminInscription() {
+  const [name, setName] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleForm = (e) => {
     e.preventDefault();
+    dispatch(addAdminInfoAction({ name, email, password }));
     navigate("/");
   };
   return (
@@ -26,6 +34,8 @@ function AdminInscription() {
             className="form-input"
             name="nom"
             id="nom"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
@@ -38,6 +48,8 @@ function AdminInscription() {
             className="form-input"
             name="email"
             id="email"
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
             required
           />
         </div>
@@ -51,6 +63,8 @@ function AdminInscription() {
             name="password"
             id="password"
             required
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-block">
@@ -58,7 +72,6 @@ function AdminInscription() {
         </button>
         <div className="underline-flex">
           <Link className="Link" to="/connexion">
-            {" "}
             Se connecter a votre compte
           </Link>
           <div className="underline" />

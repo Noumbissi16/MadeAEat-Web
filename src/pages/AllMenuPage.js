@@ -1,42 +1,61 @@
 import React from "react";
-import { FaPlus } from "react-icons/fa";
 import RepasDetails from "../components/RepasDetails";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "../utils/Styles/AllMenuPage.css";
+import { withAuthRequired } from "../hoc/withAuthRequired";
+import { useSelector } from "react-redux";
+
 function AllMenuPage() {
   const navigation = useNavigate();
-  const handleClick = () => {
-    navigation("/nouveau-repas");
-  };
+  const menuList = useSelector((state) => state.RESTAURANT.menus);
+
   return (
     <div className="page-container">
-      <div className="menu-flex">
+      <div className="menu-page-flex">
         <div className="menu-list">
           <p className="pageTitle">Vos Menu</p>
-          <RepasDetails />
-          <RepasDetails />
-          <RepasDetails />
+          <div className="menu-flex">
+            {menuList.map((menu) => (
+              <RepasDetails
+                key={menu.id}
+                id={menu.id}
+                price={menu.price}
+                name={menu.name}
+                image={menu.image}
+                desc={menu.desc}
+              />
+            ))}
+          </div>
         </div>
         <div className="btn-list">
-          <button onClick={handleClick} className="btn addMenuBtn">
-            Ajouter un repas <FaPlus />
+          <button
+            onClick={() => navigation("parametre/menu/ajouter")}
+            className=" addMenuBtn btn"
+          >
+            Ajouter un repas
           </button>
           <div className="card">
-            <div className="card-content">
-              <h5 className="card-titles">Repas le plus vendu :</h5>
-              <p className="card-text-danger ">
-                Riz Sauce Tomate : 25 Plats cette semaine
-              </p>
+            <div style={{ margin: 10 }}>
+              <div className="card-content">
+                <h5 className="card-titles">Repas le plus vendu :</h5>
+                <p className="card-text-primary ">
+                  Riz Sauce Tomate : 25 Plats cette semaine
+                </p>
+              </div>
+              <div className="card-content">
+                <h5 className="card-titles">Repas le moins vendu :</h5>
+                <p className="card-text-danger ">
+                  Riz Sauce Tomate : 25 Plats cette semaine
+                </p>
+              </div>
             </div>
-            <div className="card-content">
-              <h5 className="card-titles">Repas le moins vendu :</h5>
-              <p className="card-text-primary ">
-                Riz Sauce Tomate : 25 Plats cette semaine
-              </p>
-            </div>
-            <button className="btn" onClick={() => navigation("/historique")}>
+            <button
+              className=" addMenuBtn btn"
+              onClick={() => navigation("/historique/menu")}
+              style={{ marginBottom: 0 }}
+            >
               Details
             </button>
-            {/* <Link className="Link">Details</Link> */}
           </div>
         </div>
       </div>
@@ -45,3 +64,5 @@ function AllMenuPage() {
 }
 
 export default AllMenuPage;
+
+export const ProtectedAllMenuPage = withAuthRequired(AllMenuPage);

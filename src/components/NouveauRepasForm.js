@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 
-function NouveauRepas() {
+function NouveauRepasForm() {
   const [nom, setNom] = useState("");
   const [image, setImage] = useState("");
   const [prix, setPrix] = useState("");
@@ -73,4 +74,4 @@ function NouveauRepas() {
   );
 }
 
-export default NouveauRepas;
+export default NouveauRepasForm;

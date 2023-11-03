@@ -1,0 +1,27 @@
+@import "../../../App.css";
+
+.userImg {
+  width: 160px;
+  aspect-ratio: 1/1;
+  border-radius: 250px;
+}
+.form {
+  margin-top: 15px;
+}
+.btnPosition {
+  position: absolute;
+  bottom: 8px;
+  left: 5px;
+  font-size: 12px;
+}
+.imgContainer {
+  position: relative;
+}
+fieldset {
+  padding: 8px 16px;
+}
+
+.marginLabel {
+  margin-left: 8px;
+  text-transform: capitalize;
+}

@@ -1,0 +1,92 @@
+@import "../../../App.css";
+
+.settingsFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.settingsTop {
+  margin-bottom: 30px;
+}
+
+.user {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.userProfile {
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 65px;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+.userName {
+  font-size: 16px;
+  font-weight: 600;
+}
+.userDesc {
+  font-size: 14px;
+}
+
+.sideBar {
+  margin-bottom: 20px;
+}
+.outlet {
+  background-color: var(--white);
+  padding: 20px 30px;
+  border-radius: var(--largeRadius);
+}
+
+@media (min-width: 755px) {
+  .settingsFlex {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .outlet {
+    flex-basis: 55%;
+  }
+  .sideBar {
+    flex-basis: 40%;
+  }
+  .settingsTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .status {
+    flex-basis: 40%;
+  }
+}
+
+@media (min-width: 992px) {
+  .settingsFlex {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .outlet {
+    flex-basis: 65%;
+  }
+
+  .sideBar {
+    flex-basis: 30%;
+  }
+
+  .settingsTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .status {
+    flex-basis: 30%;
+    display: flex;
+    align-items: center;
+  }
+  #statut-restaurant {
+    width: 100px;
+    margin-left: 8px;
+    padding: 8px 4px;
+  }
+}

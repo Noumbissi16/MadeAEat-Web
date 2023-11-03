@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
+
 import { MdOutlineCancel } from "react-icons/md";
+import "../utils/Styles/Navbar.css";
+
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
   return (
     <nav>
-      <p className="mainTitle">MadeAEATS-Restaurant</p>
       <div className="nav-flex">
         <div className="name-icon-flex">
-          <p>
-            <span className="span">Bienvenue </span>
-            Mr N Fast Food
-          </p>
+          <p className="mainTitle">MadeA EAT-Restaurant</p>
+
           <div>
             {showLinks ? (
               <MdOutlineCancel
@@ -28,7 +28,7 @@ function Navbar() {
           </div>
         </div>
         <ul className={showLinks ? "link-flex-display" : "link-flex"}>
-          <li>
+          <li className="linkMargin">
             <NavLink
               className="NavLink"
               to="/"
@@ -37,34 +37,26 @@ function Navbar() {
               Menu
             </NavLink>
           </li>
-          <li>
+          <li className="linkMargin">
             <NavLink
               className="NavLink"
-              to="/nouveau-repas"
-              onClick={() => setShowLinks(false)}
-            >
-              Ajouter
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className="NavLink"
-              to="/historique"
+              to="/historique/commande"
               onClick={() => setShowLinks(false)}
             >
               Historique
             </NavLink>
           </li>
-          <li>
-            <NavLink className="NavLink" to="/connexion">
-              Deconnexion
+          <li className="linkMargin">
+            <NavLink
+              className="NavLink"
+              to="/parametre/menu/ajouter"
+              onClick={() => setShowLinks(false)}
+            >
+              Parametre
             </NavLink>
           </li>
         </ul>
       </div>
-      {/* <button> */}
-
-      {/* </button> */}
     </nav>
   );
 }
