@@ -24,7 +24,7 @@ html {
   --primary-700: #064d1c;
   --primary-800: #03270e;
   --primary-900: #000000;
-  --backgroundColor: #f3fcf6;
+  --backgroundColor: #e7f9ed;
 
   /* grey */
   --secondary-100: #ecd0cf;
@@ -80,7 +80,6 @@ h5 {
   margin: 0;
   font-family: var(--headingFont);
   font-weight: 400;
-  line-height: 30px;
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
 }
@@ -125,7 +124,6 @@ ul {
 }
 
 button {
-  /* font-weight: 600; */
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
 }
@@ -170,7 +168,7 @@ button {
 }
 .btn-block {
   width: 100%;
-  padding: 0.5rem 0;
+  /* padding: 0.5rem 0; */
 }
 
 /* alerts */

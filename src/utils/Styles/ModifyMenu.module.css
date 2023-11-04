@@ -1,0 +1,9 @@
+@import url("../../App.css");
+
+.form {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 8px;
+  width: 90vw;
+  max-width: 469px;
+}

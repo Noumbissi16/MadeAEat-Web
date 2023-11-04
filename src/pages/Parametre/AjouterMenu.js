@@ -112,13 +112,14 @@ function AjouterMenu() {
                 type="button"
                 onClick={handleImgSelect}
               >
-                Modifier
+                Ajouter
               </button>
               <input
                 type="file"
                 ref={inputImgRef}
                 style={{ display: "none" }}
                 onChange={handleInputImg}
+                accept="image/*"
               />
             </div>
 

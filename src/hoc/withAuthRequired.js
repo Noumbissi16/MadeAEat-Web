@@ -10,7 +10,7 @@ export function withAuthRequired(Component) {
       if (connected === false) {
         navigate("/connexion");
       }
-    }, []);
+    });
 
     return connected && <Component />;
   };

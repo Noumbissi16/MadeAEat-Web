@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../../utils/data/menuData";
+import annonceData from "../../utils/data/AnnonceData";
 
 export const restaurantSlice = createSlice({
   name: "restaurantSlice",
@@ -8,7 +9,7 @@ export const restaurantSlice = createSlice({
     adminInfo: {},
     restaurantInfo: {},
     menus: data,
-    annonce: [],
+    annonce: annonceData,
   },
   reducers: {
     addAdminInfoAction: (currentState, action) => {
@@ -30,7 +31,7 @@ export const restaurantSlice = createSlice({
       const updatedMenu = action.payload.menu;
 
       const idToModif = currentState.menus.findIndex(
-        (menu) => menu.id == idMenu
+        (menu) => menu.id === Number(idMenu)
       );
 
       const menu = [...currentState.menus];

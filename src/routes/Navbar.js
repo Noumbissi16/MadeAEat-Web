@@ -34,7 +34,7 @@ function Navbar() {
               to="/"
               onClick={() => setShowLinks(false)}
             >
-              Menu
+              Vos publications
             </NavLink>
           </li>
           <li className="linkMargin">
