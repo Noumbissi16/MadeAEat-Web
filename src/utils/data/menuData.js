@@ -7,14 +7,14 @@ const data = [
     id: 1,
   },
   {
-    price: "2500",
+    price: "500",
     name: "Okok",
     desc: " Tibelt preskapet. Laheten parkera bussen.Vilijynera kor. Mydat. Ron kvasityp relogi.Decin dossade.",
     image: "../utils/images/okok.jpg",
     id: 2,
   },
   {
-    price: "2500",
+    price: "1500",
     name: "Eru",
     desc: " Tibelt preskapet. Laheten parkera bussen.Vilijynera kor. Mydat. Ron kvasityp relogi.Decin dossade.",
     image: "../utils/images/eru.jpg",

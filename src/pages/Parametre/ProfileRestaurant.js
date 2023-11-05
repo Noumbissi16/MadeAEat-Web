@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addRestaurantInfoAction } from "../../redux/Restaurant/restaurant-slice";
 
 import DefaultProfile from "../../utils/images/DefaultProfil.jpg";
+import { useNavigate } from "react-router-dom";
 
 function ProfileRestaurant() {
+  const navigation = useNavigate();
   const restaurantInfo = useSelector(
     (state) => state.RESTAURANT.restaurantInfo
   );
-
-  console.log(restaurantInfo);
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -28,6 +28,7 @@ function ProfileRestaurant() {
         image,
       })
     );
+    navigation("/");
   };
 
   const days = [
@@ -40,12 +41,24 @@ function ProfileRestaurant() {
     "dimanche",
   ];
 
-  const [name, setname] = useState();
-  const [town, settown] = useState();
-  const [location, setlocation] = useState();
-  const [openingTime, setopeningTime] = useState();
-  const [closingTime, setclosingTime] = useState();
-  const [phoneNumber, setphoneNumber] = useState();
+  const [name, setname] = useState(
+    restaurantInfo.name ? restaurantInfo.name : ""
+  );
+  const [town, settown] = useState(
+    restaurantInfo.town ? restaurantInfo.town : ""
+  );
+  const [location, setlocation] = useState(
+    restaurantInfo.location ? restaurantInfo.location : ""
+  );
+  const [openingTime, setopeningTime] = useState(
+    restaurantInfo.openingTime ? restaurantInfo.openingTime : ""
+  );
+  const [closingTime, setclosingTime] = useState(
+    restaurantInfo.closingTime ? restaurantInfo.closingTime : ""
+  );
+  const [phoneNumber, setphoneNumber] = useState(
+    restaurantInfo.phoneNumber ? restaurantInfo.phoneNumber : undefined
+  );
 
   const [image, setimage] = useState(restaurantInfo.image);
 
@@ -73,6 +86,7 @@ function ProfileRestaurant() {
     const file = e.target.files[0];
     setimage(URL.createObjectURL(file));
   };
+
   return (
     <>
       <h4>Profile Restaurant</h4>
@@ -100,6 +114,7 @@ function ProfileRestaurant() {
             ref={inputRef}
             style={{ display: "none" }}
             onChange={handleInputImage}
+            accept="image/*"
           />
         </div>
         <div className="form-row">
@@ -194,7 +209,7 @@ function ProfileRestaurant() {
             Numero de telephone
           </label>
           <input
-            type="number"
+            type="tel"
             className="form-input"
             name="numero"
             id="numero"

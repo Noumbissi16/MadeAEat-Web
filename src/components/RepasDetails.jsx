@@ -2,19 +2,23 @@ import React from "react";
 import s from "../utils/Styles/RepasDetails.module.css";
 import { useNavigate } from "react-router-dom";
 import DefaultProfil from "../utils/images/DefaultProfil.jpg";
+import { useDispatch } from "react-redux";
+import { openMenuModal } from "../redux/Restaurant/restaurant-slice";
 
 function RepasDetails({ price, name, desc, image, id }) {
   const navigation = useNavigate();
 
+  const dispatch = useDispatch();
+
   const onModify = () => {
-    navigation(`parametre/menu/modifier/${id}`);
+    dispatch(openMenuModal());
+    navigation(`modifier/${id}`);
   };
 
   const onDelete = () => {
     alert("clicked");
   };
 
-  console.log(image);
   return (
     <div className={s.repas_details}>
       {image ? (

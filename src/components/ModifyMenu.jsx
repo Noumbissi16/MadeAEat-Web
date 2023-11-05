@@ -1,13 +1,26 @@
 import React, { useRef, useState } from "react";
 import s from "../utils/Styles/ModifyMenu.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  closeMenuModal,
+  modifyMenu,
+} from "../redux/Restaurant/restaurant-slice";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ModifyMenu() {
+  let { id } = useParams();
+
+  const foundMenu = useSelector((state) =>
+    state.RESTAURANT.menus.find((menu) => menu.id === Number(id))
+  );
+
+  // console.log(foundMenu);
   const inputRef = useRef(null);
 
-  const [name, setname] = useState();
-  const [description, setdescription] = useState();
-  const [image, setimage] = useState();
-  const [price, setprice] = useState();
+  const [name, setname] = useState(foundMenu.name);
+  const [description, setdescription] = useState(foundMenu.desc);
+  const [image, setimage] = useState(foundMenu.image);
+  const [price, setprice] = useState(foundMenu.price);
 
   const handleInputImgSelect = () => {
     inputRef.current.click();
@@ -18,8 +31,14 @@ function ModifyMenu() {
     setimage(URL.createObjectURL(selectImg));
   };
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   function handleFormSubmit(e) {
     e.preventDefault();
+    dispatch(closeMenuModal());
+    const menu = { name, price, desc: description, image, id };
+    dispatch(modifyMenu(menu));
+    navigate("/");
   }
 
   return (
@@ -64,8 +83,6 @@ function ModifyMenu() {
           Description
         </label>
         <textarea
-          cols="30"
-          rows="10"
           name="desc"
           id="desc"
           value={description}
@@ -79,7 +96,7 @@ function ModifyMenu() {
           Prix
         </label>
         <input
-          type="number"
+          type="tel"
           name="price"
           id="price"
           value={price}

@@ -1,8 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addAdminInfoAction } from "../redux/Restaurant/restaurant-slice";
+import {
+  addAdminInfoAction,
+  loginAction,
+} from "../redux/Restaurant/restaurant-slice";
 import { useState } from "react";
+import { withUnAuthRoutesBlock } from "../hoc/withUnAuthRoutesBlock";
 
 function AdminInscription() {
   const [name, setName] = useState("");
@@ -13,6 +17,7 @@ function AdminInscription() {
   const handleForm = (e) => {
     e.preventDefault();
     dispatch(addAdminInfoAction({ name, email, password }));
+    dispatch(loginAction());
     navigate("/");
   };
   return (
@@ -82,3 +87,5 @@ function AdminInscription() {
 }
 
 export default AdminInscription;
+
+export const UnProtAdminInscription = withUnAuthRoutesBlock(AdminInscription);

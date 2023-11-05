@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Connexion from "./pages/Connexion";
 import InscriptionRestauration from "./pages/InscriptionRestauration";
 import AdminInscription from "./pages/AdminInscription";
 import { ProtectedLanding } from "./pages/Landing";
-import Connexion from "./pages/Connexion";
 import Historique from "./pages/Historique/Historique";
 import AllMenuPage from "./pages/AllMenuPage";
 import HistoriqueCommande from "./pages/Historique/HistoriqueCommande";
@@ -14,6 +14,7 @@ import ProfileRestaurant from "./pages/Parametre/ProfileRestaurant";
 import PublierAnnonce from "./pages/Parametre/PublierAnnonce";
 import AjouterMenu from "./pages/Parametre/AjouterMenu";
 import ErrorPage from "./pages/ErrorPage";
+import Modify from "./pages/Modify";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ProtectedLanding />}>
           <Route index element={<AllMenuPage />} />
+          <Route path="modifier/:id" element={<Modify />} />
           <Route element={<Historique />} path="historique">
             <Route element={<HistoriqueCommande />} path="commande"></Route>
             <Route element={<HistoriqueMenu />} path="menu"></Route>
@@ -34,10 +36,10 @@ function App() {
             <Route element={<PublierAnnonce />} path="publier-annonce" />
             <Route element={<AjouterMenu />} path="menu">
               <Route path="ajouter" element={<AjouterMenu />} index />
-              <Route path="modifier/:id" element={<AjouterMenu />} />
             </Route>
           </Route>
         </Route>
+
         <Route
           element={<InscriptionRestauration />}
           path="/restaurant-creation"

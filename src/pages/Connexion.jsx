@@ -2,7 +2,11 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../utils/Styles/Inscription.css";
 import { useDispatch } from "react-redux";
-import { addAdminInfoAction } from "../redux/Restaurant/restaurant-slice";
+import {
+  addAdminInfoAction,
+  loginAction,
+} from "../redux/Restaurant/restaurant-slice";
+import { withUnAuthRoutesBlock } from "../hoc/withUnAuthRoutesBlock";
 
 function Connexion() {
   const navigate = useNavigate();
@@ -10,6 +14,7 @@ function Connexion() {
   const handleForm = (e) => {
     e.preventDefault();
     dispatch(addAdminInfoAction());
+    dispatch(loginAction());
     navigate("/");
   };
   return (
@@ -72,3 +77,5 @@ function Connexion() {
 }
 
 export default Connexion;
+
+export const UnProtConnexion = withUnAuthRoutesBlock(Connexion);

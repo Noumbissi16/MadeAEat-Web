@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "../utils/Styles/ModifyMenu.module.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { modifyAnnonce } from "../redux/Restaurant/restaurant-slice";
 
 function ModifyAnnonce() {
-  const [object, setobject] = useState();
-  const [content, setcontent] = useState();
+  let { id } = useParams();
+  const foundAnnonce = useSelector((state) =>
+    state.RESTAURANT.annonce.find((annonce) => annonce.id === Number(id))
+  );
+
+  const [object, setobject] = useState(foundAnnonce.objet);
+  const [content, setcontent] = useState(foundAnnonce.contenu);
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   function handleFormSubmit(e) {
     e.preventDefault();
+    dispatch(modifyAnnonce({ objet: object, contenu: content, id }));
+    navigate("/");
   }
 
   return (
@@ -31,8 +45,6 @@ function ModifyAnnonce() {
           Contenu
         </label>
         <textarea
-          cols="30"
-          rows="10"
           name="desc"
           id="desc"
           value={content}

@@ -4,9 +4,19 @@ import admin from "../../utils/images/administrateur.png";
 import annonce from "../../utils/images/annonce.png";
 import menu from "../../utils/images/menu.png";
 import restaurant from "../../utils/images/restaurant.png";
+import { useDispatch } from "react-redux";
+
+import { logOutAction } from "../../redux/Restaurant/restaurant-slice";
+
 import "../../utils/Styles/Parametre/ParametreSideBar.css";
 
 function ParametreSideBar() {
+  const dispatch = useDispatch();
+
+  function handleLogOut() {
+    dispatch(logOutAction());
+  }
+
   return (
     <div className="sideBarContainer">
       <NavLink to="profile-restaurant" className="link">
@@ -25,6 +35,10 @@ function ParametreSideBar() {
         <img alt="publier-annonce" src={annonce} className="icons" />
         <p>Publier Annonce</p>
       </NavLink>
+
+      <button className="btn btn-block link" onClick={handleLogOut}>
+        Deconnexion
+      </button>
     </div>
   );
 }

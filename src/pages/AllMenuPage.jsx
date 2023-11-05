@@ -6,6 +6,7 @@ import { withAuthRequired } from "../hoc/withAuthRequired";
 import { useSelector } from "react-redux";
 import ModifyMenu from "../components/ModifyMenu";
 import AnnonceCard from "../components/AnnonceCard";
+import ModifyAnnonce from "../components/ModifyAnnonce";
 
 function AllMenuPage() {
   const navigation = useNavigate();
@@ -14,9 +15,6 @@ function AllMenuPage() {
 
   return (
     <>
-      <div className="modalWrapper">
-        <ModifyMenu />
-      </div>
       <div className="page-container">
         <p className="pageTitle">Vos Menu</p>
         <div className="menu-page-flex">

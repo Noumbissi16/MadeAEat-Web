@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { withAuthRequired } from "../../hoc/withAuthRequired";
 import s from "../../utils/Styles/Parametre/ProfileAdministrateur.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addAdminInfoAction } from "../../redux/Restaurant/restaurant-slice";
+import { useNavigate } from "react-router-dom";
 
 const ProfileAdministrateur = () => {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addAdminInfoAction(user));
+    navigate("/");
   };
 
+  const userInfo = useSelector((state) => state.RESTAURANT.adminInfo);
+
   const [user, setuser] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: userInfo.name ? userInfo.name : "",
+    email: userInfo.email ? userInfo.email : "",
+    password: userInfo.password ? userInfo.password : "",
   });
 
   const handleInput = (e) => {

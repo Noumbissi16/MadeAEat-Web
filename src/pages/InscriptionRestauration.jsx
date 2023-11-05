@@ -1,17 +1,17 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addRestaurantInfoAction } from "../redux/Restaurant/restaurant-slice";
+import { withUnAuthRoutesBlock } from "../hoc/withUnAuthRoutesBlock";
 function InscriptionRestauration() {
   const [name, setname] = useState();
-  const [location, setlocation] = useState("Bafoussam");
+  const [town, settown] = useState("Bafoussam");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const connected = useSelector((state) => state.RESTAURANT.connected);
-  console.log(connected);
+
   const handleForm = (e) => {
-    dispatch(addRestaurantInfoAction({ name, location }));
+    dispatch(addRestaurantInfoAction({ name, town }));
     e.preventDefault();
 
     navigate("/admin-creation");
@@ -46,8 +46,8 @@ function InscriptionRestauration() {
             id="localisation"
             required
             className="dropdown"
-            value={location}
-            onChange={(e) => setlocation(e.target.value)}
+            value={town}
+            onChange={(e) => settown(e.target.value)}
           >
             <option value="Bafoussam">Bafoussam</option>
             <option value="Douala">Douala</option>
@@ -70,3 +70,7 @@ function InscriptionRestauration() {
 }
 
 export default InscriptionRestauration;
+
+export const UnProtectedInscription = withUnAuthRoutesBlock(
+  InscriptionRestauration
+);
