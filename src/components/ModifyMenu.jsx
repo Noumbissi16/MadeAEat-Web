@@ -36,7 +36,7 @@ function ModifyMenu() {
   function handleFormSubmit(e) {
     e.preventDefault();
     dispatch(closeMenuModal());
-    const menu = { name, price, desc: description, image, id };
+    const menu = { name, price, desc: description, image, id: Number(id) };
     dispatch(modifyMenu(menu));
     navigate("/");
   }

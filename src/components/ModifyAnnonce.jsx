@@ -19,7 +19,9 @@ function ModifyAnnonce() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    dispatch(modifyAnnonce({ objet: object, contenu: content, id }));
+    dispatch(
+      modifyAnnonce({ objet: object, contenu: content, id: Number(id) })
+    );
     navigate("/");
   }
 
