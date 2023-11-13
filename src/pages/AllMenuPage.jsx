@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../utils/Styles/AllMenuPage.css";
 import { withAuthRequired } from "../hoc/withAuthRequired";
 import { useSelector } from "react-redux";
-import ModifyMenu from "../components/ModifyMenu";
 import AnnonceCard from "../components/AnnonceCard";
-import ModifyAnnonce from "../components/ModifyAnnonce";
 
 function AllMenuPage() {
   const navigation = useNavigate();

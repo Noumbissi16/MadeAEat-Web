@@ -3,7 +3,10 @@ import s from "../utils/Styles/RepasDetails.module.css";
 import { useNavigate } from "react-router-dom";
 import DefaultProfil from "../utils/images/DefaultProfil.jpg";
 import { useDispatch } from "react-redux";
-import { openMenuModal } from "../redux/Restaurant/restaurant-slice";
+import {
+  deleteMenuAction,
+  openMenuModal,
+} from "../redux/Restaurant/restaurant-slice";
 
 function RepasDetails({ price, name, desc, image, id }) {
   const navigation = useNavigate();
@@ -16,7 +19,7 @@ function RepasDetails({ price, name, desc, image, id }) {
   };
 
   const onDelete = () => {
-    alert("clicked");
+    dispatch(deleteMenuAction({ id: Number(id) }));
   };
 
   return (

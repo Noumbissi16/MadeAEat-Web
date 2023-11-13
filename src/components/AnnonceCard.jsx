@@ -3,7 +3,10 @@ import React from "react";
 import s from "../utils/Styles/Annonce.module.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { openAnnounceModal } from "../redux/Restaurant/restaurant-slice";
+import {
+  deleteAnnonceAction,
+  openAnnounceModal,
+} from "../redux/Restaurant/restaurant-slice";
 
 function AnnonceCard({ annonce }) {
   const dispatch = useDispatch();
@@ -12,6 +15,10 @@ function AnnonceCard({ annonce }) {
   function onModify() {
     dispatch(openAnnounceModal());
     navigate(`modifier/${annonce.id}`);
+  }
+
+  function onDelete() {
+    dispatch(deleteAnnonceAction({ id: Number(annonce.id) }));
   }
   return (
     <div className={s.card}>
@@ -22,7 +29,9 @@ function AnnonceCard({ annonce }) {
       <button className={`btn btn-block ${s.marginBtn} `} onClick={onModify}>
         Modifier
       </button>
-      <button className="btn btn-hipster btn-block">Supprimer</button>
+      <button className="btn btn-hipster btn-block" onClick={onDelete}>
+        Supprimer
+      </button>
     </div>
   );
 }

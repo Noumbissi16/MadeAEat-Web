@@ -10,11 +10,12 @@ import { useNavigate, useParams } from "react-router-dom";
 function ModifyMenu() {
   let { id } = useParams();
 
+  // console.log(id);
+
   const foundMenu = useSelector((state) =>
     state.RESTAURANT.menus.find((menu) => menu.id === Number(id))
   );
 
-  // console.log(foundMenu);
   const inputRef = useRef(null);
 
   const [name, setname] = useState(foundMenu.name);

@@ -1,14 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { withAuthRequired } from "../../hoc/withAuthRequired";
 import DefaultProfil from "../../utils/images/DefaultProfil.jpg";
 
 import s from "../../utils/Styles/Parametre/AjouterMenu.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addMenuAction,
-  modifyMenu,
-} from "../../redux/Restaurant/restaurant-slice";
-import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addMenuAction } from "../../redux/Restaurant/restaurant-slice";
+import { useNavigate } from "react-router-dom";
 
 function AjouterMenu() {
   const dispatch = useDispatch();
@@ -23,7 +20,7 @@ function AjouterMenu() {
     name: "",
     price: "",
     desc: "",
-    image: "",
+    image: DefaultProfil,
   });
 
   const handleInput = (e) => {
@@ -76,7 +73,7 @@ function AjouterMenu() {
             <div className={s.imgContainer}>
               <img
                 alt="logo restaurant"
-                src={DefaultProfil}
+                src={menu.image}
                 className={s.userImg}
               />
 
@@ -143,7 +140,7 @@ function AjouterMenu() {
         </div>
 
         <button className="btn btn-block" type="submit">
-          "Ajouter"
+          Ajouter
         </button>
       </form>
     </>
