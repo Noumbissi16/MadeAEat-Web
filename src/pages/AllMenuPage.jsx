@@ -70,6 +70,13 @@ function AllMenuPage() {
               <AnnonceCard key={annonce.id} annonce={annonce} />
             ))}
           </div>
+
+          <button
+            className="btn btn-block"
+            onClick={() => navigation("parametre/publier-annonce")}
+          >
+            Publier une nouvelle annonce
+          </button>
         </div>
       </div>
     </>

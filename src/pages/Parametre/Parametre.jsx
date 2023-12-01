@@ -32,7 +32,7 @@ function Parametre() {
           )}
           <div>
             <h3 className="userName">
-              {restaurantInfo.name ? restaurantInfo.name : "Nom restaurant"}
+              {restaurantInfo?.name ? restaurantInfo.name : "Nom restaurant"}
               {adminInfo.name
                 ? ` ( ${adminInfo.name} )`
                 : "(Nom administrateur)"}

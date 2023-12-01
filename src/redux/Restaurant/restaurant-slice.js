@@ -1,15 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../../utils/data/menuData";
-import annonceData from "../../utils/data/AnnonceData";
 
 export const restaurantSlice = createSlice({
   name: "restaurantSlice",
   initialState: {
-    connected: true,
+    connected: false,
     adminInfo: {},
     restaurantInfo: {},
-    menus: data,
-    annonce: annonceData,
+    menus: [],
+    annonce: [],
     menuModal: false,
     annonceModal: false,
   },

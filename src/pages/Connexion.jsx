@@ -1,21 +1,25 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../utils/Styles/Inscription.css";
-import { useDispatch } from "react-redux";
 import {
-  addAdminInfoAction,
-  loginAction,
-} from "../redux/Restaurant/restaurant-slice";
+  Link,
+  // useNavigate
+} from "react-router-dom";
+import "../utils/Styles/Inscription.css";
+// import { useDispatch } from "react-redux";
+// import {
+//   addAdminInfoAction,
+//   loginAction,
+// } from "../redux/Restaurant/restaurant-slice";
 import { withUnAuthRoutesBlock } from "../hoc/withUnAuthRoutesBlock";
 
 function Connexion() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
   const handleForm = (e) => {
     e.preventDefault();
-    dispatch(addAdminInfoAction());
-    dispatch(loginAction());
-    navigate("/");
+    alert("Please first create an account");
+    // dispatch(addAdminInfoAction());
+    // dispatch(loginAction());
+    // navigate("/");
   };
   return (
     <div>

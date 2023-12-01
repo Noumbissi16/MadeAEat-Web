@@ -10,8 +10,6 @@ import { useNavigate, useParams } from "react-router-dom";
 function ModifyMenu() {
   let { id } = useParams();
 
-  // console.log(id);
-
   const foundMenu = useSelector((state) =>
     state.RESTAURANT.menus.find((menu) => menu.id === Number(id))
   );
@@ -63,11 +61,12 @@ function ModifyMenu() {
         <label onClick={handleInputImgSelect} className="form-label">
           Image
         </label>
-        <div
+        {/* <div
           style={{
             background: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${image}) no-repeat center / cover`,
           }}
-        />
+        /> */}
+        <img src={image} alt={name} className={s.img} />
         <input
           type="file"
           ref={inputRef}
@@ -108,6 +107,23 @@ function ModifyMenu() {
 
       <button type="submit" className="btn btn-block">
         Modifier
+      </button>
+
+      <button
+        type="button"
+        className="btn-block"
+        style={{
+          marginTop: 10,
+          background: "none",
+          color: "black",
+          border: "1px solid black",
+          padding: "0.25rem",
+          fontSize: 12,
+          cursor: "pointer",
+        }}
+        onClick={() => navigate("/")}
+      >
+        Annuler
       </button>
     </form>
   );
