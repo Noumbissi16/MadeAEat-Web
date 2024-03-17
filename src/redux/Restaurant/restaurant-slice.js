@@ -40,7 +40,7 @@ export const restaurantSlice = createSlice({
     },
     addMenuAction: (currentState, action) => {
       const menu = { ...action.payload, id: Date.now() };
-      console.log(menu);
+      // console.log(menu);
       currentState.menus.push(menu);
     },
     addAnnonceAction: (currentState, action) => {
@@ -110,6 +110,10 @@ export const restaurantSlice = createSlice({
         annonce: annonce,
       };
     },
+
+    getAllMenu: (currentState, action) => {
+      currentState.menus = action.payload;
+    },
   },
 });
 
@@ -128,4 +132,5 @@ export const {
   modifyAnnonce,
   deleteMenuAction,
   deleteAnnonceAction,
+  getAllMenu,
 } = restaurantSlice.actions;

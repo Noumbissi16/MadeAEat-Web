@@ -15,8 +15,19 @@ import PublierAnnonce from "./pages/Parametre/PublierAnnonce";
 import AjouterMenu from "./pages/Parametre/AjouterMenu";
 import ErrorPage from "./pages/ErrorPage";
 import Modify from "./pages/Modify";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { RestaurantAPI } from "./api/restaurant-api";
+import { getAllMenu } from "./redux/Restaurant/restaurant-slice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // const menuList = await RestaurantAPI.fetchAllMenu();
+    // dispatch(getAllMenu(menuList));
+  });
+
   return (
     <BrowserRouter>
       <Routes>
