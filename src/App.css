@@ -248,6 +248,30 @@ textarea:focus {
   letter-spacing: var(--letterSpacing);
   text-transform: capitalize;
 }
+
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: var(--backgroundColor);
+  padding: 10px;
+}
+
+.err-msg {
+  /* textAlign: "center",
+          marginBottom: "-20px",
+          marginTop: "10px",
+          fontSize: "small",
+          color: "red", */
+
+  text-align: center;
+  margin-bottom: -20px;
+  margin-top: 10px;
+  font-size: small;
+  color: red;
+}
 /* alert */
 
 @keyframes spinner {

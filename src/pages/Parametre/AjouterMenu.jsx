@@ -4,16 +4,29 @@ import DefaultProfil from "../../utils/images/DefaultProfil.jpg";
 
 import s from "../../utils/Styles/Parametre/AjouterMenu.module.css";
 import { useDispatch } from "react-redux";
-import { addMenuAction } from "../../redux/Restaurant/restaurant-slice";
 import { useNavigate } from "react-router-dom";
+import { MenuApi } from "../../api/menu-api";
+import { addMenuAction } from "../../redux/Restaurant/menu-slice";
 
 function AjouterMenu() {
   const dispatch = useDispatch();
   const navigation = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(addMenuAction(menu));
-    navigation("/");
+
+    try {
+      // console.log("menu", menu);
+      const menuResponse = await MenuApi.addMenu(
+        menu.name,
+        menu.price,
+        menu.desc,
+        menu.image
+      );
+      dispatch(addMenuAction(menuResponse.menu));
+      navigation("/");
+    } catch (error) {
+      console.log("error addMenu", error.response.data);
+    }
   };
 
   const [menu, setmenu] = useState({
@@ -59,7 +72,8 @@ function AjouterMenu() {
     const img = e.target.files[0];
     setmenu((prev) => ({
       ...prev,
-      image: URL.createObjectURL(img),
+      // image: URL.createObjectURL(img),
+      image: img,
     }));
   };
 

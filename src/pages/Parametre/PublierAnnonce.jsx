@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { withAuthRequired } from "../../hoc/withAuthRequired";
 import s from "../../utils/Styles/Parametre/Annonce.module.css";
+import { AnnonceApi } from "../../api/annonce-api";
+import { useDispatch } from "react-redux";
+import { addAnnonceAction } from "../../redux/Restaurant/annonce-slice";
 
 function PublierAnnonce() {
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const [objet, setObjet] = useState("");
+  const [contenu, setcontenu] = useState("");
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const annonce = { objet, contenu };
+    try {
+      const responseAnnonce = await AnnonceApi.createAnnonce(annonce);
+      dispatch(addAnnonceAction(responseAnnonce));
+    } catch (error) {
+      console.log("Error create annonce ", error);
+    }
   };
   return (
     <>
@@ -14,7 +27,14 @@ function PublierAnnonce() {
           <label htmlFor="objet" className="form-label">
             objet
           </label>
-          <input type="text" className="form-input" name="objet" id="objet" />
+          <input
+            value={objet}
+            onChange={(e) => setObjet(e.target.value)}
+            type="text"
+            className="form-input"
+            name="objet"
+            id="objet"
+          />
         </div>
 
         <div className="form-row">
@@ -28,6 +48,8 @@ function PublierAnnonce() {
             id="content"
             rows="5"
             maxLength={100}
+            value={contenu}
+            onChange={(e) => setcontenu(e.target.value)}
           ></textarea>
         </div>
 

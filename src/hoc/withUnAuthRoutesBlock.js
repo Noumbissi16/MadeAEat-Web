@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export function withUnAuthRoutesBlock(Component) {
   return function UnProtectedComponent() {
     const navigate = useNavigate();
-    const connected = useSelector((state) => state.RESTAURANT.connected);
+    const connected = useSelector((state) => state.AUTH.connected);
     useEffect(() => {
       if (connected === true) {
         navigate("/");

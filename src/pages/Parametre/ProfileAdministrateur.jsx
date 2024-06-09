@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { withAuthRequired } from "../../hoc/withAuthRequired";
 import s from "../../utils/Styles/Parametre/ProfileAdministrateur.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addAdminInfoAction } from "../../redux/Restaurant/restaurant-slice";
 import { useNavigate } from "react-router-dom";
+import { addAdminInfoAction } from "../../redux/Users/auth-slice";
 
 const ProfileAdministrateur = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const ProfileAdministrateur = () => {
     navigate("/");
   };
 
-  const userInfo = useSelector((state) => state.RESTAURANT.adminInfo);
+  const userInfo = useSelector((state) => state.AUTH.adminInfo);
 
   const [user, setuser] = useState({
     name: userInfo.name ? userInfo.name : "",

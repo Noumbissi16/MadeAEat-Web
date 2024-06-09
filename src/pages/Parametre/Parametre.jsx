@@ -7,11 +7,9 @@ import DefaultProfil from "../../utils/images/DefaultProfil.jpg";
 import { useSelector } from "react-redux";
 
 function Parametre() {
-  const adminInfo = useSelector((state) => state.RESTAURANT.adminInfo);
+  const adminInfo = useSelector((state) => state.AUTH.adminInfo);
 
-  const restaurantInfo = useSelector(
-    (state) => state.RESTAURANT.restaurantInfo
-  );
+  const restaurantInfo = useSelector((state) => state.AUTH.restaurantInfo);
 
   return (
     <div className="page-container">

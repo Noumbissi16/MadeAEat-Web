@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RepasDetails from "../components/RepasDetails";
 import { useNavigate } from "react-router-dom";
 import "../utils/Styles/AllMenuPage.css";
 import { withAuthRequired } from "../hoc/withAuthRequired";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AnnonceCard from "../components/AnnonceCard";
+import { MenuApi } from "../api/menu-api";
+import { getAllMenu } from "../redux/Restaurant/menu-slice";
+import { AnnonceApi } from "../api/annonce-api";
+import { addAnnonceAction } from "../redux/Restaurant/annonce-slice";
 
 function AllMenuPage() {
+  const [isFetching, setisFetching] = useState(true);
+  const [errMsg, seterrMsg] = useState("");
   const navigation = useNavigate();
-  const menuList = useSelector((state) => state.RESTAURANT.menus);
-  const annonceList = useSelector((state) => state.RESTAURANT.annonce);
+  const dispatch = useDispatch();
+  async function fetchAllMenu() {
+    try {
+      const menus = await MenuApi.fetchAllMenuApi();
+      const annonces = await AnnonceApi.getAllAnnonce();
+      dispatch(addAnnonceAction(annonces.annonce));
+      dispatch(getAllMenu(menus.menus));
+    } catch (error) {
+      console.log("error fetch all Menus", error);
+    }
+  }
+  useEffect(() => {
+    fetchAllMenu();
+  }, []);
 
+  const menuList = useSelector((state) => state.MENU.menus);
+  const annonceList = useSelector((state) => state.ANNONCE.annonces);
+
+  console.log("dd", annonceList);
   return (
     <>
       <div className="page-container">
@@ -20,12 +42,12 @@ function AllMenuPage() {
             <div className="menu-flex">
               {menuList.map((menu) => (
                 <RepasDetails
-                  key={menu.id}
-                  id={menu.id}
+                  key={menu._id}
+                  id={menu._id}
                   price={menu.price}
                   name={menu.name}
-                  image={menu.image}
-                  desc={menu.desc}
+                  image={menu.imageMenu}
+                  desc={menu.description}
                 />
               ))}
             </div>
@@ -67,7 +89,7 @@ function AllMenuPage() {
           <p className="pageTitle">Vos Annonce </p>
           <div className="annonceFlex">
             {annonceList.map((annonce) => (
-              <AnnonceCard key={annonce.id} annonce={annonce} />
+              <AnnonceCard key={annonce._id} annonce={annonce} />
             ))}
           </div>
 

@@ -1,17 +1,16 @@
 import React, { useRef, useState } from "react";
 import s from "../utils/Styles/ModifyMenu.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  closeMenuModal,
-  modifyMenu,
-} from "../redux/Restaurant/restaurant-slice";
+
 import { useNavigate, useParams } from "react-router-dom";
+import { MenuApi } from "../api/menu-api";
+import { closeMenuModal, modifyMenu } from "../redux/Restaurant/menu-slice";
 
 function ModifyMenu() {
   let { id } = useParams();
 
   const foundMenu = useSelector((state) =>
-    state.RESTAURANT.menus.find((menu) => menu.id === Number(id))
+    state.MENU.menus.find((menu) => menu._id === id)
   );
 
   const inputRef = useRef(null);
@@ -32,13 +31,24 @@ function ModifyMenu() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  function handleFormSubmit(e) {
+  async function handleFormSubmit(e) {
     e.preventDefault();
-    dispatch(closeMenuModal());
-    const menu = { name, price, desc: description, image, id: Number(id) };
-    dispatch(modifyMenu(menu));
-    navigate("/");
+    const menu = { name, price, desc: description, image, id: id };
+
+    try {
+      const updatedMenu = MenuApi.updateMenuById(id, menu);
+      dispatch(closeMenuModal());
+      dispatch(modifyMenu(updatedMenu));
+      navigate("/");
+    } catch (error) {
+      console.log("error updating menu", error);
+    }
   }
+
+  const annulateBtn = () => {
+    dispatch(closeMenuModal());
+    navigate("/");
+  };
 
   return (
     <form onSubmit={handleFormSubmit} className={s.form}>
@@ -66,7 +76,12 @@ function ModifyMenu() {
             background: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${image}) no-repeat center / cover`,
           }}
         /> */}
-        <img src={image} alt={name} className={s.img} />
+        <img
+          src={image}
+          alt={name}
+          className={s.img}
+          style={{ height: "50px" }}
+        />
         <input
           type="file"
           ref={inputRef}
@@ -121,7 +136,7 @@ function ModifyMenu() {
           fontSize: 12,
           cursor: "pointer",
         }}
-        onClick={() => navigate("/")}
+        onClick={annulateBtn}
       >
         Annuler
       </button>

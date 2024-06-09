@@ -2,19 +2,31 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addRestaurantInfoAction } from "../redux/Restaurant/restaurant-slice";
 import { withUnAuthRoutesBlock } from "../hoc/withUnAuthRoutesBlock";
+import { AuthAPI } from "../api/auth-api";
+import { addRestaurantInfoAction } from "../redux/Users/auth-slice";
 function InscriptionRestauration() {
   const [name, setname] = useState();
   const [town, settown] = useState("Bafoussam");
+  const [location, setlocation] = useState();
+  const [isLoading, setisLoading] = useState(false);
+  const [errMsg, seterrMsg] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleForm = (e) => {
-    dispatch(addRestaurantInfoAction({ name, town }));
+  const handleForm = async (e) => {
+    setisLoading(true);
+    seterrMsg("");
     e.preventDefault();
-
-    navigate("/admin-creation");
+    try {
+      const restaurant = await AuthAPI.createRestaurant(name, town, location);
+      setisLoading(false);
+      dispatch(addRestaurantInfoAction(restaurant));
+      navigate("/");
+    } catch (error) {
+      console.log("error create-restaurant", error.response.data);
+      seterrMsg(error.response.data.msg);
+    }
   };
   return (
     <div>
@@ -55,8 +67,26 @@ function InscriptionRestauration() {
             <option value="Sangmelima">Sangmelima</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-block">
-          Ajouter
+        <div className="form-row">
+          <label htmlFor="nom" className="form-label">
+            localisation du restaurant dans la ville
+          </label>
+          <input
+            type="text"
+            className="form-input"
+            name="nom"
+            id="nom"
+            required
+            value={location}
+            onChange={(e) => setlocation(e.target.value)}
+          />
+        </div>
+        <button
+          type="submit"
+          className="btn btn-block"
+          style={{ textTransform: "lowercase" }}
+        >
+          {isLoading ? "...chargement" : "Ajouter"}
         </button>
         <div className="underline-flex">
           <Link className="Link" to="/connexion">

@@ -2,27 +2,41 @@ import React, { useState } from "react";
 import s from "../utils/Styles/ModifyMenu.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { modifyAnnonce } from "../redux/Restaurant/restaurant-slice";
+import { AnnonceApi } from "../api/annonce-api";
+import {
+  closeAnnounceModal,
+  modifyAnnonce,
+} from "../redux/Restaurant/annonce-slice";
 
 function ModifyAnnonce() {
   let { id } = useParams();
   const foundAnnonce = useSelector((state) =>
-    state.RESTAURANT.annonce.find((annonce) => annonce.id === Number(id))
+    state.RESTAURANT.annonce.find((annonce) => annonce._id === id)
   );
 
-  const [object, setobject] = useState(foundAnnonce.objet);
-  const [content, setcontent] = useState(foundAnnonce.contenu);
+  const [object, setobject] = useState(foundAnnonce.title);
+  const [content, setcontent] = useState(foundAnnonce.description);
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    dispatch(
-      modifyAnnonce({ objet: object, contenu: content, id: Number(id) })
-    );
+  const annulateBtn = () => {
+    dispatch(closeAnnounceModal());
     navigate("/");
+  };
+
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const annonce = { object, content };
+    try {
+      const updatedAnnonce = await AnnonceApi.updateAnnonceById(id, annonce);
+      dispatch(modifyAnnonce(updatedAnnonce));
+      dispatch(closeAnnounceModal());
+      navigate("/");
+    } catch (error) {
+      console.log("error updating annonce ", error);
+    }
   }
 
   return (
@@ -56,6 +70,22 @@ function ModifyAnnonce() {
       </div>
       <button type="submit" className="btn btn-block">
         Modifier
+      </button>
+      <button
+        type="button"
+        className="btn-block"
+        style={{
+          marginTop: 10,
+          background: "none",
+          color: "black",
+          border: "1px solid black",
+          padding: "0.25rem",
+          fontSize: 12,
+          cursor: "pointer",
+        }}
+        onClick={annulateBtn}
+      >
+        Annuler
       </button>
     </form>
   );

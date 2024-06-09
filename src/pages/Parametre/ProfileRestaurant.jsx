@@ -2,16 +2,14 @@ import React, { useRef, useState } from "react";
 import { withAuthRequired } from "../../hoc/withAuthRequired";
 import s from "../../utils/Styles/Parametre/ProfileRestaurant.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addRestaurantInfoAction } from "../../redux/Restaurant/restaurant-slice";
 
 import DefaultProfile from "../../utils/images/DefaultProfil.jpg";
 import { useNavigate } from "react-router-dom";
+import { addRestaurantInfoAction } from "../../redux/Users/auth-slice";
 
 function ProfileRestaurant() {
   const navigation = useNavigate();
-  const restaurantInfo = useSelector(
-    (state) => state.RESTAURANT.restaurantInfo
-  );
+  const restaurantInfo = useSelector((state) => state.AUTH.restaurantInfo);
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {

@@ -5,10 +5,8 @@ import annonce from "../../utils/images/annonce.png";
 import menu from "../../utils/images/menu.png";
 import restaurant from "../../utils/images/restaurant.png";
 import { useDispatch } from "react-redux";
-
-import { logOutAction } from "../../redux/Restaurant/restaurant-slice";
-
 import "../../utils/Styles/Parametre/ParametreSideBar.css";
+import { logOutAction } from "../../redux/Users/auth-slice";
 
 function ParametreSideBar() {
   const dispatch = useDispatch();

@@ -1,31 +1,48 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  addAdminInfoAction,
-  loginAction,
-} from "../redux/Restaurant/restaurant-slice";
 import { useState } from "react";
 import { withUnAuthRoutesBlock } from "../hoc/withUnAuthRoutesBlock";
+import { AuthAPI } from "../api/auth-api";
+import { addAdminInfoAction } from "../redux/Users/auth-slice";
 
 function AdminInscription() {
   const [name, setName] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [isLoading, setisLoading] = useState(false);
+  const [errMsg, seterrMsg] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleForm = (e) => {
+  const handleForm = async (e) => {
+    seterrMsg("");
+    setisLoading(true);
     e.preventDefault();
-    dispatch(addAdminInfoAction({ name, email, password }));
-    dispatch(loginAction());
-    navigate("/");
+    try {
+      const adminRestaurant = await AuthAPI.createAdmin(name, email, password);
+      setisLoading(false);
+      dispatch(addAdminInfoAction(adminRestaurant));
+      // dispatch(loginAction());
+      navigate("/restaurant-creation");
+    } catch (error) {
+      console.log("error create-restaurant ", error.response.data.msg);
+      seterrMsg(error.response.data.msg);
+      setisLoading(false);
+    }
   };
   return (
     <div>
       <div className="container">
         <h1>MadeAEATS</h1>
-        <h2>Application des Restaurants</h2>
+        <h2
+          style={{
+            marginTop: "-15px",
+          }}
+        >
+          Application des Restaurants
+        </h2>
       </div>
+      <p className="err-msg">{errMsg}</p>
       <form className="form" onSubmit={handleForm}>
         <h3 className="title margin-bottom">
           Inscrivez un administrateur de votre restaurant
@@ -72,8 +89,12 @@ function AdminInscription() {
             onChange={(e) => setpassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-block">
-          Inscription
+        <button
+          type="submit"
+          className="btn btn-block"
+          style={{ textTransform: isLoading ? "lowercase" : "capitalize" }}
+        >
+          {isLoading ? "...chargement" : "Inscription"}
         </button>
         <div className="underline-flex">
           <Link className="Link" to="/connexion">

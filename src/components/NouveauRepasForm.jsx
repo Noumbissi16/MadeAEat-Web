@@ -1,14 +1,23 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { MenuApi } from "../api/menu-api";
+import { addMenuAction } from "../redux/Restaurant/menu-slice";
 
 function NouveauRepasForm() {
   const [nom, setNom] = useState("");
   const [image, setImage] = useState("");
   const [prix, setPrix] = useState("");
   const [description, setDescription] = useState("");
-  const handleSubmit = (event) => {
-    console.log(image);
+  const dispatch = useDispatch();
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const newMenu = await MenuApi.addMenu(nom, prix, description, image);
+      dispatch(addMenuAction(newMenu));
+    } catch (error) {
+      console.log("error creating menu ", error);
+    }
   };
   return (
     <div className="page-container">

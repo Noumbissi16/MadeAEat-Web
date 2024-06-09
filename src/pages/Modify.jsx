@@ -5,10 +5,8 @@ import { useSelector } from "react-redux";
 import ModifyMenu from "../components/ModifyMenu";
 
 const Modify = () => {
-  const menuModalState = useSelector((state) => state.RESTAURANT.menuModal);
-  const annonceModalState = useSelector(
-    (state) => state.RESTAURANT.annonceModal
-  );
+  const menuModalState = useSelector((state) => state.MENU.menuModal);
+  const annonceModalState = useSelector((state) => state.ANNONCE.annonceModal);
   return (
     <>
       {annonceModalState ? (
